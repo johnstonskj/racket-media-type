@@ -19,6 +19,27 @@
 
 This package provides types and predicates for testing internet media types.
 
+@nested[#:style 'inset]{
+@italic{A media type (formerly known as a MIME type) is a two-part identifier for file formats and format contents
+transmitted on the Internet. Their purpose is somewhat similar to file extensions in that they identify the intended
+data format. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and
+publication of these classifications.}
+}
+
+@nested[#:style 'code-inset]{
+@verbatim|{
+mime-type := type "/" sub-type ["+" suffix] [";" parameter]*
+sub-type  := [tree "."] subtype
+parameter := param-name "=" param-value
+
+type      := restricted-name
+tree      := restricted-name
+subtype   := restricted-name + "."
+param-name := restricted-name + ":" "+" "."
+}|
+}
+
+
 @defstruct*[media-type
             ([type media-type-type-string?]
              [subtype (listof media-type-subtype-facet-string?)]
